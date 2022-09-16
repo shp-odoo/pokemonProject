@@ -1,0 +1,85 @@
+<div *ngIf="pokemonDetail" class="page-wrapper">
+  <div class="row">
+   <div class="text-center nameTitle">
+    <h1>{{ pokemonDetail.name | titlecase }}</h1>
+   </div>
+   <button type="button" class="btn btn-link"  routerLink="/">Go Back</button>
+    <hr>
+    <div class="col-sm-6">
+      <div class="mt-2">
+        <h3><b>Type Of Pokemon:</b></h3>
+        <ul *ngFor="let type of pokemonDetail.types">
+         <li>{{ type.type.name }}</li> 
+        </ul>
+      </div>
+      <ul class="list-group list-group-flush mt-4" style="width: 20rem">
+        <li class="list-group-item">
+          Experience
+          <b class="float-end">{{ pokemonDetail.base_experience }}</b>
+        </li>
+        <li class="list-group-item">
+          Height <b class="float-end">{{ pokemonDetail.height }}</b>
+        </li>
+        <li class="list-group-item">
+          Weight <b class="float-end">{{ pokemonDetail.weight }}</b>
+        </li>
+      </ul>
+    </div>
+    <div class="col-sm-4">
+      <img
+        src="{{ image }}"
+        alt=""
+        class="img-fluid d-block mx-auto"
+        style="width: 300px"
+      />
+    </div>
+  </div>
+  <!-- stats -->
+  <div class="card mb-3">
+    <h3 class="card-title text-center"><b>Stats</b></h3>
+    <div class="card-Body">
+      <div *ngFor="let stat of pokemonDetail.stats" class="card-content">
+        <div>
+          <h4 class="text-sm-end mt-1">{{ stat.stat.name | titlecase }}</h4>
+        </div>
+        <div class="col-sm-10">
+          <mat-progress-spinner
+            color="primary"
+            value="{{ stat.base_stat }}"
+            mode="determinate"
+          ></mat-progress-spinner>
+          <div style="position: relative; top: -60px; left: 40px">
+            {{ stat.base_stat }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- abilities -->
+  <div class="card mb-3">
+    <div class="card-body">
+      <h3 class="card-title text-center"><b>Abilities</b></h3>
+    </div>
+    <ul class="list-group list-group-flush">
+      <li
+        *ngFor="let ability of pokemonDetail.abilities"
+        class="list-group-item"
+      >
+        {{ ability.ability.name | titlecase }}
+      </li>
+    </ul>
+  </div>
+
+  <!-- moves -->
+  <div class="card mb-3">
+    <div class="card-body">
+      <h3 class="card-title text-center"><b>Moves</b></h3>
+    </div>
+    <ul class="list-unstyled" style="column-count: 2;">
+      <li *ngFor="let move of pokemonDetail.moves" class="list-group-item list-border">
+        {{ move.move.name | titlecase }}
+      </li>
+    </ul>
+  </div>
+</div>

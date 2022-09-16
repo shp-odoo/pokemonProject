@@ -1,0 +1,45 @@
+<mat-toolbar>
+    <span>Explore Pokemon</span>
+    <span class="spacer"></span>
+    <button mat-button (click)="localError()">TestErrorDialog</button>
+  </mat-toolbar>
+<div class="card-wrapper page-wrapper">
+    <mat-card class="card" *ngFor="let item of pokemons">
+        <mat-card-content>
+            <div class="row">
+                <div class="col-sm-6">
+                    <h1>{{item.name | titlecase}}</h1>
+                    <div class="col-sm-6">
+                        <img src="{{item.sprites.other.dream_world.front_default}}" alt=""
+                            class="img-fluid mx-auto" style="width: 270px;">
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <ul class="list-group list-group-flush mt-4">
+                        <li class="list-group-item">
+                          Experience
+                          <b class="float-end">{{ item.base_experience }}</b>
+                        </li>
+                        <li class="list-group-item">
+                          Height <b class="float-end">{{ item.height }}</b>
+                        </li>
+                        <li class="list-group-item">
+                          Weight <b class="float-end">{{ item.weight }}</b>
+                        </li>
+                      </ul>
+                </div>    
+            </div>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-stroked-button  class="detailButton" (click)="gotoDetails(item.name)">Explore Details</button>
+        </mat-card-actions>
+    </mat-card>
+    <div class="row">
+        <div class="col-sm text-center">
+            <button mat-button class="button is-primary is-outline" (click)="loadMore()">
+                <div class="spinner-border spinner-border-sm" role="status" *ngIf="loading"></div>
+                {{loading ? 'Loading...' : 'Load More'}}
+            </button>
+        </div>
+    </div>
+</div>

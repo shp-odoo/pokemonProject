@@ -1,0 +1,27 @@
+.card {
+  background-color: #ffff;
+  padding: 20px;
+  font-size: 30px;
+  text-align: center;
+  color: black;
+}
+
+.card-header {
+  background-size: cover;
+}
+.card-wrapper {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  padding: 10px;
+  gap: 10px;
+}
+.detailButton {
+  color: #004d93;
+}
+.spacer {
+  flex: 1 1 auto;
+}
+.page-wrapper {
+  background-color: #f0f8ff;
+  width: 100%;
+}
